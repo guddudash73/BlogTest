@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { resister, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
   const [error, setError] = useState();
 
   const login = async (data) => {
@@ -19,6 +19,7 @@ function Login() {
       if (session) {
         const userData = authservice.getCurrentUser();
         if (userData) dispatch(authLogin(userData));
+        console.log(userData);
         navigate("/");
       }
     } catch (error) {
@@ -56,7 +57,7 @@ function Login() {
               label="Email: "
               placeholder="Enter your email"
               type="email"
-              {...resister("email", {
+              {...register("email", {
                 required: true,
                 validate: {
                   matchPatern: (value) =>
@@ -69,7 +70,7 @@ function Login() {
               label="Password: "
               type="password"
               placeholder="Enter Your password"
-              {...resister("password", {
+              {...register("password", {
                 required: true,
               })}
             ></Input>

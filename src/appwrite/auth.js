@@ -22,7 +22,7 @@ export class Authservice {
       );
       if (userAccount) {
         //call another mathod
-        return this.login(email, password);
+        return this.login({ email, password });
       } else {
         return userAccount;
       }
@@ -35,6 +35,7 @@ export class Authservice {
     try {
       return await this.account.createEmailPasswordSession(email, password);
     } catch (error) {
+      console.log("from auth login");
       throw error;
     }
   }

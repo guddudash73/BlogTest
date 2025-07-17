@@ -19,7 +19,6 @@ function Login() {
       if (session) {
         const userData = authservice.getCurrentUser();
         if (userData) dispatch(authLogin(userData));
-        console.log(userData);
         navigate("/");
       }
     } catch (error) {

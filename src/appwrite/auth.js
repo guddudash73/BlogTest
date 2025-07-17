@@ -33,9 +33,9 @@ export class Authservice {
 
   async login({ email, password }) {
     try {
+      console.log("this is from the create account auth.js");
       return await this.account.createEmailPasswordSession(email, password);
     } catch (error) {
-      console.log("from auth login");
       throw error;
     }
   }
